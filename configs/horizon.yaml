@@ -14,7 +14,7 @@ config:
   disable_tx_tfa:                          true
   force_https_links:                       false
   project:                                 "horizon"
-  env:                                     "developer-edition"
+  env:                                     "auditor"
   migrate_up_on_start:                     true
   api_backend:                             http://black.hole
   template_backend:                        http://black.hole

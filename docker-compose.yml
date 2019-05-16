@@ -2,8 +2,7 @@ version: '3.3'
 
 services:
   core:
-    # image: tokend/core:3.2.1
-    image: registry.gitlab.com/tokend/core:pg-b5c157b9a8377008bcc791492536e5dea59d2845
+    image: tokend/core:3.2.2
     restart: unless-stopped
     environment:
       - POSTGRES_USER=core
@@ -15,20 +14,20 @@ services:
     volumes:
       - ./configs/core.ini:/core-config.ini
       - core-data:/data
-  # horizon:
-  #   image: tokend/horizon:3.3.0
-  #   ports:
-  #     - "8080:80"
-  #   depends_on:
-  #     - core
-  #   restart: unless-stopped
-  #   environment:
-  #     - POSTGRES_USER=horizon
-  #     - POSTGRES_PASSWORD=horizon
-  #     - POSTGRES_DB=horizon
-  #     - PGDATA=/pgdata
-  #   volumes:
-  #     - ./configs/horizon.yaml:/config.yaml
+  horizon:
+    image: tokend/horizon:3.3.0
+    ports:
+      - "8080:80"
+    depends_on:
+      - core
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=horizon
+      - POSTGRES_PASSWORD=horizon
+      - POSTGRES_DB=horizon
+      - PGDATA=/pgdata
+    volumes:
+      - ./configs/horizon.yaml:/config.yaml
 volumes:
   core-data:
-  # horizon-data:
+  horizon-data:

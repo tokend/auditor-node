@@ -4,21 +4,21 @@ Running auditor node is as simple as filling one config file and calling a `dock
 ### Platform-dependent data
 Request platform administrator the following information:
 
-    - NETWORK_PASSPHRASE   - This is the identificator of the network
-    - MASTER_ACCOUNT_ID    - This is the master account of the platform
-    - BASE_EXCHANGE_NAME   - This is the human-readable name ot the platform
-    - Gateway url          - URL:PORT of the publicly-visible core
-    - History buckets' URL - this is the url for downloading history of the platform
-    - PUBLIC_KEYs of publicly-visible cores
+    - NETWORK_PASSPHRASE  - This is the identificator of the network
+    - MASTER_ACCOUNT_ID   - This is the master account of the platform
+    - BASE_EXCHANGE_NAME  - This is the human-readable name of the platform
+    - PREFERRED_PEERS     - Array of strings "URL:PORT" of the publicly-visible cores
+    - NODE_NAMES          - Array of strings "PUBLIC_KEY alias" of publicly-visible cores
+    - HISTORY_GET_COMMAND - this is the history get command for downloading history of the platform
 
 You should receive something like this (in free format):
 ```
 NETWORK_PASSPHRASE: "Tutorial network!"
 MASTER_ACCOUNT_ID:  "GBA4EX43M25UPV4WIE6RRMQOFTWXZZRIPFAI5VPY6Z2ZVVXVWZ6NEOOB"
 BASE_EXCHANGE_NAME: "TokenD"
-Gateway url: "abd2c72d477b411e984f20aeae5344b9-7951a3850f76c4e7.elb.us-east-1.amazonaws.com:8090"
-PUBLIC_KEYS: ["GDEM3RHX6XZVIN23XM3UT44ILBYXP5P4BO6R4MV3US7PEER232RSIXCB", "GBC3SSF7AS4J3SU3FYKXZUKNMAMUOIROGP3ZNY4WJL4WJBFVU66FFEJO"]
-History buckets' URL: "https://buckets.tutorial.tokend.io"
+PREFERRED_PEERS: ["abd2c72d477b411e984f20aeae5344b9-7951a3850f76c4e7.elb.us-east-1.amazonaws.com:8090", "cve2c72d876b411e984f20aeae5344b9-7951a3850f76c4e7.elb.us-east-1.amazonaws.com:8090"]
+NODE_NAMES: ["GDEM3RHX6XZVIN23XM3UT44ILBYXP5P4BO6R4MV3US7PEER232RSIXCB alpha", "GBC3SSF7AS4J3SU3FYKXZUKNMAMUOIROGP3ZNY4WJL4WJBFVU66FFEJO bravo"]
+HISTORY_GET_COMMAND: "curl -sf https://history.tutorial.tokend.io/{0} -o {1}"
 ```
 
 ### Generate
@@ -59,7 +59,6 @@ NODE_NAMES=[
  "GDEM3RHX6XZVIN23XM3UT44ILBYXP5P4BO6R4MV3US7PEER232RSIXCB alpha",
  "GBC3SSF7AS4J3SU3FYKXZUKNMAMUOIROGP3ZNY4WJL4WJBFVU66FFEJO bravo"]
 ```
-where PUBLIC_KEYs are the NODES_PUBLIC_KEYS, and `alpha`, `bravo` are aliases you created to reference this keys.
 ___
 
 Set `PREFERRED_PEERS` to the array of publicly-visible cores' urls as follows:
@@ -83,14 +82,13 @@ VALIDATORS=[
 Note the leading `$`.
 ___
 
-Set the url in `[HISTORY.src]` section to the History bucket's URL:
+Set the get command in `[HISTORY.src]` section to the HISTORY_GET_COMMAND:
 ```
 [HISTORY.src]
-get="curl -sf https://buckets.tutorial.tokend.io/{0} -o {1}"
+get="curl -sf https://history.tutorial.tokend.io/{0} -o {1}"
 ```
-Note the slash between the url and `{0}`.
 ___
-*All the other configs in the core.ini file mustn't be changed.*
+*All the other configs in the core.ini file must not be changed.*
 
 ## Running
 When configs are filled with correct values running the node is quite easy.
