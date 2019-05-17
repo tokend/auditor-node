@@ -16,7 +16,7 @@ You should receive something like this (in free format):
 NETWORK_PASSPHRASE: "Tutorial network!"
 MASTER_ACCOUNT_ID:  "GBA4EX43M25UPV4WIE6RRMQOFTWXZZRIPFAI5VPY6Z2ZVVXVWZ6NEOOB"
 BASE_EXCHANGE_NAME: "TokenD"
-PREFERRED_PEERS: ["abd2c72d477b411e984f20aeae5344b9-7951a3850f76c4e7.elb.us-east-1.amazonaws.com:8090", "cve2c72d876b411e984f20aeae5344b9-7951a3850f76c4e7.elb.us-east-1.amazonaws.com:8090"]
+PREFERRED_PEERS: ["core-alpha.tutorial.tokend.io:8090", "core-bravo.tutorial.tokend.io:8090"]
 NODE_NAMES: ["GDEM3RHX6XZVIN23XM3UT44ILBYXP5P4BO6R4MV3US7PEER232RSIXCB alpha", "GBC3SSF7AS4J3SU3FYKXZUKNMAMUOIROGP3ZNY4WJL4WJBFVU66FFEJO bravo"]
 HISTORY_GET_COMMAND: "curl -sf https://history.tutorial.tokend.io/{0} -o {1}"
 ```
@@ -31,7 +31,7 @@ You should see the following output:
 Secret seed: SAXK2YCEHV3DLLFQ2N4NHC36C4VISRFIRM4WAX475SHX6WFUFZ373K2X
 Public: GAO5AAU4QK2BJAMLAD6EBR4X2KVFV54U6M3CV6USSLLE76ITCEA5V6VB
 ```
-Save secret seed (the `S...` part).
+Save secret seed, you'll need it later.
 
 ## Configuring
 Please open the configs/core.ini file in the editor of your choice and tune its content following provided instructions.
@@ -61,8 +61,8 @@ ___
 Set `PREFERRED_PEERS` to the array of publicly-visible cores' urls as follows:
 ```
 PREFERRED_PEERS=[
-  "cve2c72d876b411e984f20aeae5344b9-7951a3850f76c4e7.elb.us-east-1.amazonaws.com:8090",
-  "abd2c72d477b411e984f20aeae5344b9-7951a3850f76c4e7.elb.us-east-1.amazonaws.com:8090"]
+  "core-alpha.tutorial.tokend.io:8090",
+  "core-bravo.tutorial.tokend.io:8090"]
 ```
 ___
 
