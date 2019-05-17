@@ -24,13 +24,10 @@ HISTORY_GET_COMMAND: "curl -sf https://history.tutorial.tokend.io/{0} -o {1}"
 ### Generate
 Generate `NODE_SEED` by running following command:
 ```
-docker run --rm --entrypoint=core tokend/core:3.2.1 --genseed
+docker run --rm --entrypoint=core tokend/core:3.2.1 gen-seed
 ```
 You should see the following output:
 ```
-Using DEPRECATED command-line syntax.
-Please refer to documentation for new syntax.
-
 Secret seed: SAXK2YCEHV3DLLFQ2N4NHC36C4VISRFIRM4WAX475SHX6WFUFZ373K2X
 Public: GAO5AAU4QK2BJAMLAD6EBR4X2KVFV54U6M3CV6USSLLE76ITCEA5V6VB
 ```
