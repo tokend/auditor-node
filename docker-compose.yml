@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   core:
-    image: tokend/core:3.2.2
+    image: tokend/core:3.3.1
     restart: unless-stopped
     environment:
       - POSTGRES_USER=core
