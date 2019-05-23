@@ -8,7 +8,7 @@ services:
       - POSTGRES_USER=core
       - POSTGRES_PASSWORD=core
       - POSTGRES_DB=core
-      - PGDATA=/pgdata
+      - PGDATA=/data/pgdata
       - ENSUREDB=1
       - CONFIG=/core-config.ini
     volumes:
