@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   core:
-    image: tokend/core:3.3.1
+    image: tokend/core:3.6.3.1
     restart: unless-stopped
     environment:
       - POSTGRES_USER=core
@@ -15,7 +15,7 @@ services:
       - ./configs/core.ini:/core-config.ini
       - core-data:/data
   horizon:
-    image: tokend/horizon:3.3.0
+    image: tokend/horizon:3.7.1.1
     ports:
       - "8080:80"
     depends_on:
