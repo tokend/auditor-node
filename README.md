@@ -101,6 +101,22 @@ horizon:
     image: tokend/horizon:3.8.0
 ```
 
+## Check if node synced
+
+```
+curl http://localhost:8080/info
+
+Response:
+{
+  "info": {
+    //...
+    "state": "Synced!",
+    //...
+  }
+}
+
+```
+
 ## Running
 When configs are filled with correct values running the node is quite easy.
 Go to the directory with docker-compose.yaml file and run:
