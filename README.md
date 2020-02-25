@@ -10,6 +10,8 @@ Request platform administrator the following information:
     - PREFERRED_PEERS     - Array of strings "URL:PORT" of the publicly-visible cores
     - NODE_NAMES          - Array of strings "PUBLIC_KEY alias" of publicly-visible cores
     - HISTORY_GET_COMMAND - this is the history get command for downloading history of the platform
+    - Core image          - core docker image that should be used
+    - Horizon image       - horizon docker image that should be used
 
 You should receive something like this (in free format):
 ```
@@ -19,6 +21,8 @@ BASE_EXCHANGE_NAME: "TokenD"
 PREFERRED_PEERS: ["core-alpha.tutorial.tokend.io:8090", "core-bravo.tutorial.tokend.io:8090"]
 NODE_NAMES: ["GDEM3RHX6XZVIN23XM3UT44ILBYXP5P4BO6R4MV3US7PEER232RSIXCB alpha", "GBC3SSF7AS4J3SU3FYKXZUKNMAMUOIROGP3ZNY4WJL4WJBFVU66FFEJO bravo"]
 HISTORY_GET_COMMAND: "curl -sf https://history.tutorial.tokend.io/{0} -o {1}"
+Core image: tokend/core:3.6.1
+Horizon image: tokend/core:3.8.0
 ```
 
 ### Generate
@@ -86,6 +90,16 @@ get="curl -sf https://history.tutorial.tokend.io/{0} -o {1}"
 ```
 ___
 *All the other configs in the core.ini file must not be changed.*
+
+___
+Open docker-compose.yaml and change images:
+```
+core:
+    image: tokend/core:3.3.1
+
+horizon:
+    image: tokend/horizon:3.8.0
+```
 
 ## Running
 When configs are filled with correct values running the node is quite easy.
